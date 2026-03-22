@@ -45,6 +45,9 @@ function esc(str) {
 
 // ─── LAYOUT ───────────────────────────────────────────────────────────────────
 
+const CSS = fs.readFileSync(path.join(__dirname, 'public/style.css'), 'utf8');
+const JS  = fs.readFileSync(path.join(__dirname, 'public/main.js'),  'utf8');
+
 function layout(title, bodyContent, activePage) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -53,7 +56,7 @@ function layout(title, bodyContent, activePage) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${esc(title)} — Mediaphorie</title>
   <meta name="description" content="Mediaphorie — Your online store for ballet class music, CDs, MP3 downloads, and piano scores." />
-  <link rel="stylesheet" href="/style.css" />
+  <style>${CSS}</style>
 </head>
 <body>
 
@@ -118,7 +121,7 @@ ${bodyContent}
   </div>
 </footer>
 
-<script src="/main.js"></script>
+<script>${JS}</script>
 </body>
 </html>`;
 }
