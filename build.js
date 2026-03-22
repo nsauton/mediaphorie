@@ -45,6 +45,9 @@ function esc(str) {
 
 // ─── LAYOUT ───────────────────────────────────────────────────────────────────
 
+const CSS = fs.readFileSync(path.join(__dirname, 'public/style.css'), 'utf8');
+const JS  = fs.readFileSync(path.join(__dirname, 'public/main.js'),  'utf8');
+
 function layout(title, bodyContent, activePage) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -53,7 +56,7 @@ function layout(title, bodyContent, activePage) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${esc(title)} — Mediaphorie</title>
   <meta name="description" content="Mediaphorie — Your online store for ballet class music, CDs, MP3 downloads, and piano scores." />
-  <link rel="stylesheet" href="/style.css" />
+  <style>${CSS}</style>
 </head>
 <body>
 
@@ -118,7 +121,7 @@ ${bodyContent}
   </div>
 </footer>
 
-<script src="/main.js"></script>
+<script>${JS}</script>
 </body>
 </html>`;
 }
@@ -182,7 +185,7 @@ ${marqueeHTML()}
       </div>
     </a>
     <a href="/shop/?filter=score" class="cat-tile fade-up">
-      <img src="/images/score.jpg" alt="Piano Scores" />
+      <img src="/images/scores.jpg" alt="Piano Scores" />
       <div class="cat-tile-overlay">
         <div class="cat-tile-label">Print &amp; Digital</div>
         <div class="cat-tile-title">Piano Scores</div>
@@ -206,7 +209,7 @@ ${marqueeHTML()}
       </div>
     </a>
     <a href="/shop/" class="cat-tile fade-up">
-      <img src="/images/all.jpg" alt="All Music" />
+      <img src="/images/artists.jpg" alt="Browse by Artist" />
       <div class="cat-tile-overlay">
         <div class="cat-tile-label">Complete catalogue</div>
         <div class="cat-tile-title">All Music</div>
